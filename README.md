@@ -31,6 +31,7 @@ Things you may want to cover:
 brew install openssl
 gem install bindex -- --with-cppflags=-I/opt/homebrew/opt/openssl@1.1/include
 gem install puma -- --with-cppflags=-I/opt/homebrew/opt/openssl@1.1/include
-rvm use ruby-3.1.2
+rvm use ruby-3.0.0
 rails new projects
+gem install rspec
 ```
