@@ -70,4 +70,5 @@ gem install rubocop
 gem install simplecov
 bundle add devise
 rails g devise:install
+rails g devise user
 ```
