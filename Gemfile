@@ -76,3 +76,5 @@ group :development do
   gem 'rubocop-rails', require: false
   gem 'rubocop-rspec', require: false
 end
+
+gem "devise", "~> 4.8"
