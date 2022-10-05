@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
+  resources :tasks
+  resources :members
   resources :projects
   devise_scope :user do
     # Redirects signing out users back to sign-in

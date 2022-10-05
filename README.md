@@ -73,4 +73,9 @@ bundle add devise
 rails g devise:install
 rails g devise user
 rake db:migrate
+rails g scaffold project name description:text user:references
+rake db:migrate
+rails g scaffold member name email description:text user:references
+# rails g scaffold status name description:text
+rails generate scaffold task name description:text project:references member:references status
 ```
