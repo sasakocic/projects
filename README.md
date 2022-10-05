@@ -68,5 +68,6 @@ rails new projects
 gem install rspec
 gem install rubocop
 gem install simplecov
-
+bundle add devise
+rails g devise:install
 ```
