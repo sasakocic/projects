@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
+  resources :projects
   devise_scope :user do
     # Redirects signing out users back to sign-in
     get "users", to: "devise/sessions#new"

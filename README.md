@@ -10,6 +10,7 @@ Please feel free to add any functionality as per your choice
 So logged-in user creates projects and tasks within projects. He assigns the tasks to members.
 Members could be part of a team.
 
+rails g scaffold project name description:text user:references
 users
     id
     name
