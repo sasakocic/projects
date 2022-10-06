@@ -1,27 +1,27 @@
 class TasksController < ApplicationController
   before_action :authenticate_user!
   before_action :set_project
-  before_action :set_task, only: %i[ show edit update destroy ]
+  before_action :set_task, only: %i[show edit update destroy]
 
-  # GET /tasks or /tasks.json
+  # GET /project/1/tasks or /tasks.json
   def index
     @tasks = Task.where(project: @project)
   end
 
-  # GET /tasks/1 or /tasks/1.json
+  # GET /project/1/tasks/1 or /project/1/tasks/1.json
   def show
   end
 
-  # GET /tasks/new
+  # GET /project/1/tasks/new
   def new
     @task = Task.new(project: @project)
   end
 
-  # GET /tasks/1/edit
+  # GET /project/1/tasks/1/edit
   def edit
   end
 
-  # POST /tasks or /tasks.json
+  # POST /project/1/tasks or /project/1/tasks.json
   def create
     @task = Task.new(task_params.merge(project: @project))
 
@@ -36,9 +36,9 @@ class TasksController < ApplicationController
     end
   end
 
-  # PATCH/PUT /tasks/1 or /tasks/1.json
+  # PATCH/PUT /project/1/tasks/1 or /project/1/tasks/1.json
   def update
-    fail
+    raise
     respond_to do |format|
       if @task.update(task_params)
         format.html { redirect_to project_tasks_url, notice: "Task was successfully updated." }
@@ -50,7 +50,7 @@ class TasksController < ApplicationController
     end
   end
 
-  # DELETE /tasks/1 or /tasks/1.json
+  # DELETE /project/1/tasks/1 or /project/1/tasks/1.json
   def destroy
     @task.destroy
 
@@ -61,17 +61,18 @@ class TasksController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_task
-      @task = Task.find(params[:id])
-    end
+
+  # Use callbacks to share common setup or constraints between actions.
+  def set_task
+    @task = Task.find(params[:id])
+  end
 
   def set_project
     @project = Project.find(params[:project_id])
   end
 
-    # Only allow a list of trusted parameters through.
-    def task_params
-      params.require(:task).permit(:name, :description, :project_id, :member_id, :status)
-    end
+  # Only allow a list of trusted parameters through.
+  def task_params
+    params.require(:task).permit(:name, :description, :project_id, :member_id, :status)
+  end
 end
