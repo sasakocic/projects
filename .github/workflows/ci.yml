@@ -1,0 +1,62 @@
+name: CI
+on: [push]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:11
+        ports:
+        - 5432:5432
+        env:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: postgres
+        options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5
+    strategy:
+      fail-fast: false
+    steps:
+    - name: Cancel Previous Runs
+      uses: styfle/cancel-workflow-action@0.7.0
+      with:
+        access_token: ${{ github.token }}
+
+    - uses: actions/checkout@v1
+
+    - uses: actions/setup-ruby@v1
+      with:
+        ruby-version: 2.5
+
+    - uses: actions/cache@v1
+      with:
+        path: vendor/bundle
+        key: ${{ runner.os }}-gems-${{ hashFiles('**/Gemfile.lock') }}
+        restore-keys: |
+          ${{ runner.os }}-gems-
+
+    - name: Install postgres client
+      run: sudo apt-get install libpq-dev
+
+    - name: Bundle install
+      run: |
+        gem install bundler
+        bundle install --jobs 4 --retry 3
+
+    - name: Setup Database
+      run: |
+        bundle exec rake db:create
+        bundle exec rake db:schema:load
+      env:
+        RAILS_ENV: test
+        DB_NAME: github-actions
+        DB_USER: postgres
+        DB_PASSWORD: postgres
+        DB_POOL: 20
+
+    - name: Run RSpec
+      run: bundle exec rspec
+      env:
+        RAILS_ENV: test
+        DB_NAME: github-actions
+        DB_USER: postgres
+        DB_PASSWORD: postgres
+        DB_POOL: 20

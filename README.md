@@ -1,4 +1,8 @@
-# Project Management
+# Project Management - Plannerly
+
+<p>
+   <a href="https://github.com/sasakocic/projects/actions"><img alt="test status" src="https://github.com/sasakocic/projects/workflows/build-test/badge.svg"></a>
+</p>
 
 ## Description
 
@@ -13,14 +17,13 @@ Members could be part of a team.
 rails g scaffold project name description:text user:references
 users
     id
-    name
     email
 
 projects
     id: autonumber
     name: string
     description: text
-    owner: references user
+    user: references user
     created_at
     updated_at
 
@@ -29,7 +32,16 @@ tasks
     name
     description
     project: references project
-    assignee: references member
+    member: references member
+    created_at
+    updated_at
+
+members
+    id
+    name
+    email
+    description
+    user: references user
     created_at
     updated_at
 
