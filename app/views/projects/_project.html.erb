@@ -1,17 +1,7 @@
-<div id="<%= dom_id project %>">
-  <p>
-    <strong>Name:</strong>
-    <%= project.name %>
-  </p>
-
-  <p>
-    <strong>Description:</strong>
-    <%= project.description %>
-  </p>
-
-  <p>
-    <strong>User:</strong>
-    <%= project.user_id %>
-  </p>
-
-</div>
+<tr>
+  <th scope="row"><%= project.id %></th>
+  <td colspan="2"><%= project.name %></td>
+  <td><%= project.description %></td>
+  <td><%= link_to "Edit", edit_project_path(project) %></td>
+  <td><%= link_to "Tasks", project_tasks_url(project) %></td>
+</tr>

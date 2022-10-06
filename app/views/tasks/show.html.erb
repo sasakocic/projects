@@ -1,10 +1,24 @@
 <p style="color: green"><%= notice %></p>
 
-<%= render @task %>
+<table class="table">
+  <thead>
+  <tr>
+    <th scope="col">#</th>
+    <th scope="col">Name</th>
+    <th scope="col">Description</th>
+    <th scope="col">Assignee</th>
+    <th scope="col">Status</th>
+    <th scope="col">Links</th>
+  </tr>
+  </thead>
+  <tbody>
+    <%= render @task %>
+  </tbody>
+</table>
 
 <div>
-  <%= link_to "Edit this task", edit_task_path(@task) %> |
-  <%= link_to "Back to tasks", tasks_path %>
+  <%= link_to "Edit this task", edit_project_task_path(@project.id, @task.id) %> |
+  <%= link_to "Back to tasks", project_tasks_path %>
 
-  <%= button_to "Destroy this task", @task, method: :delete %>
+  <%= button_to "Destroy this task", project_task_path(@project.id, @task), method: :delete, class: "btn btn-danger ml-3" %>
 </div>

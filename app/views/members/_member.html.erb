@@ -1,22 +1,8 @@
-<div id="<%= dom_id member %>">
-  <p>
-    <strong>Name:</strong>
-    <%= member.name %>
-  </p>
-
-  <p>
-    <strong>Email:</strong>
-    <%= member.email %>
-  </p>
-
-  <p>
-    <strong>Description:</strong>
-    <%= member.description %>
-  </p>
-
-  <p>
-    <strong>User:</strong>
-    <%= member.user_id %>
-  </p>
-
-</div>
+<tr>
+  <th scope="row"><%= member.id %></th>
+  <td><%= member.name %></td>
+  <td><%= member.email %></td>
+  <td><%= member.description %></td>
+  <td><%= member.user_id %></td>
+  <td><%= link_to "Edit", edit_member_path(member) %></td>
+</tr>

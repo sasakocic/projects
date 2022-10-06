@@ -1,9 +1,9 @@
 <h1>New task</h1>
 
-<%= render "form", task: @task %>
+<%= render "form", task: @task, project: @project %>
 
 <br>
 
 <div>
-  <%= link_to "Back to tasks", tasks_path %>
+  <%= link_to "Back to tasks", project_tasks_path %>
 </div>

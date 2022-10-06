@@ -1,27 +1,8 @@
-<div id="<%= dom_id task %>">
-  <p>
-    <strong>Name:</strong>
-    <%= task.name %>
-  </p>
-
-  <p>
-    <strong>Description:</strong>
-    <%= task.description %>
-  </p>
-
-  <p>
-    <strong>Project:</strong>
-    <%= task.project_id %>
-  </p>
-
-  <p>
-    <strong>Member:</strong>
-    <%= task.member_id %>
-  </p>
-
-  <p>
-    <strong>Status:</strong>
-    <%= task.status %>
-  </p>
-
-</div>
+<tr>
+  <th scope="row"><%= task.id %></th>
+  <td colspan="1"><%= task.name %></td>
+  <td><%= task.description %></td>
+  <td><%= task.member_id %></td>
+  <td><%= task.status %></td>
+  <td><%= link_to "View", project_task_path(@project.id,task.id) %></td>
+</tr>
