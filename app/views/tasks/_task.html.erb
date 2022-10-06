@@ -4,5 +4,6 @@
   <td><%= task.description %></td>
   <td><%= task.member_id %></td>
   <td><%= task.status %></td>
-  <td><%= link_to "View", project_task_path(@project.id,task.id) %></td>
+  <td><%= link_to "Edit", edit_project_task_path(@project.id,task.id), class: "btn ml-3" %></td>
+  <td><%= button_to "Delete", project_task_path(@project.id, task), method: :delete, class: "btn ml-3" %></td>
 </tr>
