@@ -9,7 +9,7 @@ RSpec.describe Project, type: :model do
     project = create(:project)
     expect(project.name).to eq 'Project 1'
     expect(project.description).to eq 'Description 1'
-    expect(project.user.email).to eq 'test@example.com'
+    expect(project.user.email).to match /user\d+@example.com/
   end
 
   it 'new does not create a valid object if user is not defined' do
