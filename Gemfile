@@ -62,8 +62,11 @@ group :test do
   gem 'selenium-webdriver'
   gem 'webdrivers'
   # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
+  gem 'database_cleaner'
+  gem 'shoulda-matchers'
   gem 'simplecov', '~>0.17.1'
   gem 'simplecov-json'
+  gem 'timecop'
 end
 
 group :development do
@@ -77,6 +80,8 @@ group :development do
 
   # Speed up commands on slow machines / big apps [https://github.com/rails/spring]
   # gem "spring"
+  gem 'byebug', platform: :mri
+  gem 'factory_bot_rails', '4.10.0'
   gem 'rubocop', require: false
   gem 'rubocop-rails', require: false
   gem 'rubocop-rspec', require: false
