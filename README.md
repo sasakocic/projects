@@ -1,7 +1,7 @@
 # Project Management - Plannerly
 
 <p>
-   <a href="https://github.com/sasakocic/projects/actions"><img alt="test status" src="https://github.com/sasakocic/projects/workflows/build-test/badge.svg"></a>
+   <a href="https://github.com/sasakocic/projects/actions"><img alt="test status" src="https://github.com/sasakocic/projects/workflows/CI/badge.svg"></a>
 </p>
 
 ## Description
