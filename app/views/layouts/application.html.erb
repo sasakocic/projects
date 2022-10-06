@@ -8,31 +8,10 @@
 
     <%#= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
-    <!-- Warning !! ensure that "stylesheet_pack_tag" is used, line below -->
-    <%#= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
-<!--    <link rel="stylesheet" href="https://cdn.simplecss.org/simple.min.css">-->
     <%= javascript_importmap_tags %>
-<!--    <script type="text/javascript" src="/js/bootstrap.js"></script>-->
-<!--    <script>-->
-<!--        $(document).ready(function(){-->
-<!--            $('.dropdown-toggle').dropdown()-->
-<!--        });-->
-<!--    </script>-->
   </head>
 
   <body>
-  <!-- inside app/views/home/index.html.erb -->
-  <h1>Welcome, this is the home page</h1>
-
-  <button type="button"
-          class="btn btn-lg btn-danger"
-          data-bs-toggle="popover"
-          title="Popover title"
-          data-bs-content="Amazing content, right ?">
-    Click to toggle popover
-  </button>
-
   <%= render "layouts/navbar" %>
     <div class="container-fluid">
       <div class="row flex-nowrap">
