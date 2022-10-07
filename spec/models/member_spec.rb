@@ -3,6 +3,8 @@ require 'rails_helper'
 RSpec.describe Member, type: :model do
   it 'factory bot creates a valid object' do
     member = create(:member)
+    member1 = create(:member)
+    member2 = create(:member)
     expect(member.name).to match 'Member'
     expect(member.description).to match 'Description'
     expect(member.user.email).to match(/user\d+@example.com/)

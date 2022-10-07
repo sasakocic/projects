@@ -81,7 +81,8 @@ rails db:migrate
 
 Just run
 
-        rails test
+        createdb project_test # only once
+        bundle exec rspec
 
 * Services
 
@@ -108,4 +109,5 @@ rake db:migrate
 rails g scaffold member name email description:text user:references
 # rails g scaffold status name description:text
 rails generate scaffold task name description:text project:references member:references status
+heroku stack:set heroku-20 # downgrade from 22 because of ruby-3.0.0
 ```

@@ -20,6 +20,6 @@ RSpec.describe Task, type: :model do
   it 'is a valid object even if member (assignee) is not defined' do
     task = create(:task)
     task.member = nil
-    expect(task).not_to be_valid
+    expect(task).to be_valid
   end
 end

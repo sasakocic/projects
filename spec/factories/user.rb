@@ -1,10 +1,8 @@
 require 'factory_bot_rails'
 
 FactoryBot.define do
-  sequence(:random_email_id) { |n| n }
-
   factory :user do
-    id = FactoryBot.generate(:random_email_id)
-    email { "user#{id}@example.com" }
+    sequence(:email) { |n| "user#{n}@example.com" }
+    password { 'password' }
   end
 end
