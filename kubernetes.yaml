@@ -1,0 +1,98 @@
+apiVersion: v1
+kind: Secret
+metadata:
+  name: projects
+  namespace: projects
+type: Opaque
+stringData:
+  password: SOMESECRETPASSWORD
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: projects
+  namespace: projects
+  labels:
+    app: projects
+spec:
+  replicas: 1
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels:
+      app: projects
+  template:
+    metadata:
+      labels:
+        app: projects
+    spec:
+      containers:
+        - image: skocic/projects:1.0.1-amd64
+          livenessProbe:
+            tcpSocket:
+              port: 3000
+            initialDelaySeconds: 30
+            periodSeconds: 10
+            successThreshold: 1
+            failureThreshold: 2
+            timeoutSeconds: 3
+          name: projects
+          env:
+            - name: RAILS_ENV
+              value: "development"
+            - name: DB_NAME
+              value: "projects_development"
+            - name: DB_USER
+              value: "projects"
+            - name: DB_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: projects
+                  key: password
+          ports:
+            - containerPort: 3000
+              name: projects
+          resources:
+            limits:
+              cpu: 500m
+              memory: 600Mi
+            requests:
+              cpu: 200m
+              memory: 200Mi
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: projects
+  namespace: projects
+spec:
+  ports:
+    - port: 80
+      targetPort: 3000
+      protocol: TCP
+  selector:
+    app: projects
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: projects-ingress
+  namespace: projects
+  annotations:
+    cert-manager.io/cluster-issuer: "letsencrypt-prod"
+spec:
+  tls:
+    - hosts:
+        - projects.kocic.cloud
+      secretName: projects-secret
+  rules:
+    - host: projects.kocic.cloud
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: projects
+                port:
+                  number: 80
