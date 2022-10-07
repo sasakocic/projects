@@ -4,7 +4,7 @@ class MembersController < ApplicationController
 
   # GET /members or /members.json
   def index
-    @members = Member.all
+    @members = Member.where(user: current_user)
   end
 
   # GET /members/1 or /members/1.json
@@ -13,7 +13,7 @@ class MembersController < ApplicationController
 
   # GET /members/new
   def new
-    @member = Member.new
+    @member = Member.new(user: current_user)
   end
 
   # GET /members/1/edit
@@ -22,7 +22,7 @@ class MembersController < ApplicationController
 
   # POST /members or /members.json
   def create
-    @member = Member.new(member_params)
+    @member = Member.new(member_params.merge(user: current_user))
 
     respond_to do |format|
       if @member.save

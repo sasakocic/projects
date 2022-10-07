@@ -4,5 +4,6 @@
   <td><%= member.email %></td>
   <td><%= member.description %></td>
   <td><%= member.user_id %></td>
-  <td><%= link_to "Edit", edit_member_path(member) %></td>
+  <td><%= link_to "Edit", edit_member_path(member), class: "btn ml-3" %></td>
+  <td><%= button_to "Delete", member, method: :delete, class: "btn ml-3" %></td>
 </tr>

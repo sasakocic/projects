@@ -41,3 +41,6 @@ vendor
 bin
 log
 storage
+/coverage/
+# Ignore Byebug command history file.
+.byebug_history
