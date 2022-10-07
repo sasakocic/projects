@@ -6,6 +6,6 @@ FactoryBot.define do
     name { "Member #{id}" }
     email { "member#{id}@example.com" }
     description { "Description #{id}" }
-    user { create(:user, email: "user#{id}@example.com") }
+    user { create(:user, email: "member.user#{id}@example.com") }
   end
 end
