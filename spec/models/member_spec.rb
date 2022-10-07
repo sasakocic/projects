@@ -5,7 +5,7 @@ RSpec.describe Member, type: :model do
     member = create(:member)
     expect(member.name).to match 'Member'
     expect(member.description).to match 'Description'
-    expect(member.user.email).to match /user\d+@example.com/
+    expect(member.user.email).to match(/user\d+@example.com/)
   end
 
   it 'new does not create a valid object if user is not defined' do

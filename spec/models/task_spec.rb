@@ -6,8 +6,8 @@ RSpec.describe Task, type: :model do
     expect(task).to be_valid
     expect(task.name).to match 'Task'
     expect(task.description).to match 'Description'
-    expect(task.project.name).to match /Project \d+/
-    expect(task.member.name).to match /Member \d+/
+    expect(task.project.name).to match(/Project \d+/)
+    expect(task.member.name).to match(/Member \d+/)
     expect(task.status).to match 'Done'
   end
 

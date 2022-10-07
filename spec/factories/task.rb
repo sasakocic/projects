@@ -6,7 +6,7 @@ FactoryBot.define do
     name { "Task #{id}" }
     description { "Description #{id}" }
     project { create(:project, user: create(:user, password: 'password', email: "user#{id}@example.com")) }
-    member { create (:member) }
+    member { create(:member) }
     status { 'Done' }
   end
 end

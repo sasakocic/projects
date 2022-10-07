@@ -50,3 +50,6 @@ Metrics/AbcSize:
 # Configuration parameters: CountComments, CountAsOne, ExcludedMethods, IgnoredMethods.
 Metrics/MethodLength:
   Max: 35
+
+Layout/LineLength:
+  Max: 160
