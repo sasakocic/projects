@@ -10,6 +10,11 @@ AllCops:
 Bundler/OrderedGems:
   AutoCorrect: true
 
+Metrics/BlockLength:
+  Exclude:
+    - 'config/**/*'
+    - 'spec/**/*'
+
 #Style/Alias:
 #  EnforcedStyle: prefer_alias_method
 

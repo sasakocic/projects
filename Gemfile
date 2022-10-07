@@ -86,3 +86,5 @@ group :development do
   gem 'rubocop-rails', require: false
   gem 'rubocop-rspec', require: false
 end
+
+gem "rspec-html", "~> 0.2.14"

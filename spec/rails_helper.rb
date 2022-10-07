@@ -17,6 +17,7 @@ require 'rspec/rails'
 # option on the command line or in ~/.rspec, .rspec or `.rspec-local`.
 #
 ENV['RAILS_ENV'] ||= 'test'
+ENV['COVERAGE'] ||= 'false'
 # Prevent database truncation if the environment is production
 abort('The Rails environment is running in production mode!') if Rails.env.production?
 
@@ -27,15 +28,17 @@ abort('The Rails environment is running in production mode!') if Rails.env.produ
 #
 Dir[Rails.root.join('spec', 'support', '**', '*.rb')].sort.each { |f| require f }
 
-SimpleCov.start do
-  add_filter '/test/'
-  add_filter '/config/'
-  add_filter '/vendor/'
+if ActiveModel::Type::Boolean.new.cast(ENV['COVERAGE'])
+  SimpleCov.start do
+    add_filter '/test/'
+    add_filter '/config/'
+    add_filter '/vendor/'
 
-  add_group 'Controllers', 'app/controllers'
-  add_group 'Models', 'app/models'
-  add_group 'Helpers', 'app/helpers'
-  add_group 'Mailers', 'app/mailers'
+    add_group 'Controllers', 'app/controllers'
+    add_group 'Models', 'app/models'
+    add_group 'Helpers', 'app/helpers'
+    add_group 'Mailers', 'app/mailers'
+  end
 end
 
 # Checks for pending migrations and applies them before tests are run.
