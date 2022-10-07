@@ -40,6 +40,8 @@ spec:
           env:
             - name: RAILS_ENV
               value: "development"
+            - name: DB_HOST
+              value: "postgresql.database.svc.cluster.local"
             - name: DB_NAME
               value: "projects_development"
             - name: DB_USER

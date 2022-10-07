@@ -90,7 +90,14 @@ Just run
 
 * Deployment instructions
 
-    - rails server
+  - create a database
+
+      sudo -u postgres psql
+      postgres=# create database project_test;
+      postgres=# create user projects with encrypted password 'projects';
+      postgres=# grant all privileges on database project_test to postgres;
+
+  - bundle exec rails server
 
 ## Setup
 

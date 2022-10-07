@@ -5,7 +5,7 @@ FactoryBot.define do
     sequence(:id) { |n| n }
     name { "Task #{id}" }
     description { "Description #{id}" }
-    project { create(:project, user: create(:user, email: "user#{id}@example.com")) }
+    project { create(:project, user: create(:user, email: "project.user#{id}@example.com")) }
     member { create(:member) }
     status { 'Done' }
   end
