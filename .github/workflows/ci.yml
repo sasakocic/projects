@@ -64,7 +64,7 @@ jobs:
         DB_POOL: 20
         COVERAGE: true
     - name: Add code coverage comment
-      uses: romeovs/lcov-reporter-action@v0.2.16
+      uses: romeovs/lcov-reporter-action@v0.2.21
       with:
         lcov-file: ./coverage/lcov/projects.lcov
         github-token: ${{ secrets.GITHUB_TOKEN }}
