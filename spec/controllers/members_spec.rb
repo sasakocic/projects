@@ -112,6 +112,18 @@ RSpec.describe MembersController, type: :request do
         expect(member.email).to eq 'name@example.com'
         expect(member.description).to eq 'Description'
       end
+
+      it "should not update a member for empty email value" do
+        member = create(:member)
+        put member_path(member.id), params: {
+          member: {
+            name: 'Name',
+            email: nil,
+            description: 'Description'
+          }
+        }
+        expect(response.status).to eq 422
+      end
     end
   end
 
