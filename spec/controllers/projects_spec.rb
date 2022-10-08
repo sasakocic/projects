@@ -65,25 +65,25 @@ RSpec.describe ProjectsController, type: :request do
       end
 
       it "should create a project" do
-        expect {
+        expect do
           post projects_path, params: {
             project: {
               name: 'Name',
-              description: 'Description',
+              description: 'Description'
             }
           }
-        }.to change { Project.count }.by 1
+        end.to change { Project.count }.by 1
         expect(response.status).to eq 302
       end
 
       it "should not create a project if email is missing" do
-        expect {
+        expect do
           post projects_path, params: {
             project: {
-              description: 'Description',
+              description: 'Description'
             }
           }
-        }.not_to change { Project.count }
+        end.not_to(change { Project.count })
         expect(response.status).to eq 422
       end
     end
@@ -130,9 +130,9 @@ RSpec.describe ProjectsController, type: :request do
 
       it "should delete a project" do
         create(:project)
-        expect {
+        expect do
           delete project_path(Project.last.id)
-        }.to change { Project.count }.by(-1)
+        end.to change { Project.count }.by(-1)
         expect(response.status).to eq 302
       end
     end
