@@ -66,27 +66,27 @@ RSpec.describe TasksController, type: :request do
       end
 
       it "should create a task" do
-        expect {
+        expect do
           post project_tasks_path(project.id), params: {
             task: {
               name: 'Name',
               description: 'Description',
-              status: 'Done',
+              status: 'Done'
             }
           }
-        }.to change { Task.count }.by 1
+        end.to change { Task.count }.by 1
         expect(response.status).to eq 302
       end
 
       it "should not create a task if email is missing" do
-        expect {
+        expect do
           post project_tasks_path(project.id), params: {
             task: {
               name: nil,
-              description: 'Description',
+              description: 'Description'
             }
           }
-        }.not_to change { Task.count }
+        end.not_to(change { Task.count })
         expect(response.status).to eq 422
       end
     end
@@ -133,9 +133,9 @@ RSpec.describe TasksController, type: :request do
 
       it "should delete a task" do
         task = create(:task)
-        expect {
+        expect do
           delete project_task_path(project.id, task.id)
-        }.to change { Task.count }.by(-1)
+        end.to change { Task.count }.by(-1)
         expect(response.status).to eq 302
       end
     end

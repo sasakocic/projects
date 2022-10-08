@@ -65,27 +65,27 @@ RSpec.describe MembersController, type: :request do
       end
 
       it "should create a member" do
-        expect {
+        expect do
           post members_path, params: {
             member: {
               name: 'Name',
               email: 'name@example.com',
-              description: 'Description',
+              description: 'Description'
             }
           }
-        }.to change { Member.count }.by 1
+        end.to change { Member.count }.by 1
         expect(response.status).to eq 302
       end
 
       it "should not create a member if email is missing" do
-        expect {
+        expect do
           post members_path, params: {
             member: {
               name: 'Name',
-              description: 'Description',
+              description: 'Description'
             }
           }
-        }.not_to change { Member.count }
+        end.not_to(change { Member.count })
         expect(response.status).to eq 422
       end
     end
@@ -135,9 +135,9 @@ RSpec.describe MembersController, type: :request do
 
       it "should delete a member" do
         create(:member)
-        expect {
+        expect do
           delete member_path(Member.last.id)
-        }.to change { Member.count }.by(-1)
+        end.to change { Member.count }.by(-1)
         expect(response.status).to eq 302
       end
     end
