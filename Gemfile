@@ -63,9 +63,11 @@ group :test do
   gem 'webdrivers'
   # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
   gem 'database_cleaner'
+  gem "rspec-html", "~> 0.2.14"
   gem 'shoulda-matchers'
-  gem 'simplecov', '~>0.17.1'
+  gem 'simplecov', '~>0.21.2'
   gem 'simplecov-json'
+  gem "simplecov-lcov", "~> 0.8.0"
   gem 'timecop'
 end
 
@@ -87,4 +89,3 @@ group :development do
   gem 'rubocop-rspec', require: false
 end
 
-gem "rspec-html", "~> 0.2.14"

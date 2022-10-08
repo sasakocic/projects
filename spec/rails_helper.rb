@@ -6,6 +6,8 @@ require 'factory_bot_rails'
 require 'devise_helper'
 require_relative '../config/environment'
 require 'rspec/rails'
+require 'simplecov-lcov'
+
 # Add additional requires below this line. Rails is not loaded until this point!
 
 # Requires supporting ruby files with custom matchers and macros, etc, in
@@ -29,6 +31,8 @@ abort('The Rails environment is running in production mode!') if Rails.env.produ
 Dir[Rails.root.join('spec', 'support', '**', '*.rb')].sort.each { |f| require f }
 
 if ActiveModel::Type::Boolean.new.cast(ENV['COVERAGE'])
+  SimpleCov::Formatter::LcovFormatter.config.report_with_single_file = true
+  SimpleCov.formatter = SimpleCov::Formatter::LcovFormatter
   SimpleCov.start do
     add_filter '/test/'
     add_filter '/config/'
