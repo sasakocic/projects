@@ -1,5 +1,6 @@
 class TurboDeviseController < ApplicationController
   class Responder < ActionController::Responder
+    # :nocov:
     def to_turbo_stream
       controller.render(options.merge(formats: :html))
     rescue ActionView::MissingTemplate => e
