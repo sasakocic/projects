@@ -62,6 +62,7 @@ jobs:
         DB_USER: postgres
         DB_PASSWORD: postgres
         DB_POOL: 20
+        COVERAGE: true
     - name: Add code coverage comment
       uses: romeovs/lcov-reporter-action@v0.2.16
       with:

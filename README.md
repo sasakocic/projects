@@ -118,3 +118,10 @@ rails g scaffold member name email description:text user:references
 rails generate scaffold task name description:text project:references member:references status
 heroku stack:set heroku-20 # downgrade from 22 because of ruby-3.0.0
 ```
+
+### Documentation
+
+- [Changelog](./CHANGELOG.md)
+- [License](./LICENSE)
+- [Rubocop Style Guide](https://github.com/rubocop/ruby-style-guide)
+- [Contributing](./CONTRIBUTING.md)

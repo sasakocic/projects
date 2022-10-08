@@ -10,6 +10,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Fixed
 ### Removed
 
+## [1.0.2] - 2022-10-08 11:01
+### Added
+- gem simplecov-lcov to show code coverage in github actions
+### Changed
+- raised code coverage to 100%
+
 ## [1.0.1] - 2022-10-07 09:31
 ### Added
 - Dockerfile for ruby-3.0.0
