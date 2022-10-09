@@ -10,37 +10,7 @@ Rails application that allows logged-in users to create projects and tasks withi
 
 ## Database model
 
-```
-users
-    id
-    email
-
-projects
-    id: autonumber
-    name: string
-    description: text
-    user: references user
-    created_at
-    updated_at
-
-tasks
-    id
-    name
-    description
-    project: references project
-    member: references member
-    created_at
-    updated_at
-
-members
-    id
-    name
-    email
-    description
-    user: references user
-    created_at
-    updated_at
-```
+![Database model](./schema.png)
 
 * Ruby version
 
